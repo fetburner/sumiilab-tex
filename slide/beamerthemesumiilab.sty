@@ -1,0 +1,108 @@
+\mode<presentation>
+
+\usefonttheme{default}
+\usecolortheme{default}
+\useinnertheme{default}
+\useoutertheme{default}
+
+\setbeamersize{text margin left=.75zw,text margin right=.75zw}
+\setbeamertemplate{navigation symbols}{}
+
+%% fonts
+\usefonttheme{professionalfonts}
+\usefonttheme[onlymath]{serif}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+%% page numbers
+\setbeamertemplate{footline}[frame number]
+\setbeamerfont{footline}{size=\footnotesize,series=\bfseries}
+\setbeamercolor{footline}{fg=black,bg=black}
+
+%% itemize/enumerate/toc
+\setbeamertemplate{itemize items}[circle]
+%\setbeamertemplate{enumerate item}[circle]
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\small}
+\setbeamertemplate{sections/subsections in toc}[circle]
+\setbeamerfont{section number projected}{series=\bfseries,size=\normalsize}
+
+%%
+%% blocks
+%%
+
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block title}{family={\bf},fg=white,bg=structure}
+\setbeamercolor{block body}{bg=structure!10}
+
+\setbeamercolor{block title example}{family={\bf},fg=white,bg=OliveGreen}
+\setbeamercolor{block body example}{use=block title example,bg=block title example.bg!10!white}
+
+\setbeamercolor{block title alerted}{family={\bf},fg=white,bg=BrickRed}
+\setbeamercolor{block body alerted}{use=block title alerted,bg=block title alerted.bg!10!white}
+
+%%
+%% title page
+%%
+
+\newcommand\insertsession{}
+\newcommand\session[1]{\gdef\insertsession{#1}}
+
+\setbeamerfont{date}{size=\footnotesize}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{institute}{size=\small}
+\setbeamerfont{session}{size=\small}
+
+\defbeamertemplate*{title page}{sumiilab}[1][]{
+  \vbox{}
+  \vfill
+  \begin{centering}
+    \ifx\insertsession\@empty%
+    \else%
+      \begin{beamercolorbox}[sep=8pt,center,#1]{session}%
+        \usebeamerfont{session}\insertsession%
+      \end{beamercolorbox}%
+    \fi%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \end{centering}
+  \vfill
+}
+
+\renewcommand\today{\number\year 年 \number\month 月 \number\day 日}
+
+%%
+%% appendix
+%%
+
+\let\org@appendix=\appendix
+\renewenvironment{appendix}[1][予備スライド]{%
+  \renewcommand{\appendixname}{#1}
+  \newcounter{framenumberappendix}
+  \setcounter{framenumberappendix}{\value{framenumber}}
+  \org@appendix
+}{%
+  \addtocounter{framenumberappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberappendix}}
+}
+
+\mode
+<all>

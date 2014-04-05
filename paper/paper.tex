@@ -1,0 +1,92 @@
+\documentclass{sumiilab-paper}
+%% uplatex を使う場合：
+% \documentclass[uplatex]{sumiilab-paper}
+
+% 論文の年度と種類
+\paper{平成 n 年度 卒業論文}% 学部生
+%\paper{平成 n 年度 修士論文}% 修士
+
+% 論文のタイトル
+\title{住井研究室の\\ステキな論文クラスファイルの使用例}
+
+% 学籍番号と著者のお名前
+\author{X0XX1234 ラムダ 小太郎}
+
+% 著者の所属
+\institute{東北大学 工学部\\情報知能システム総合学科}% 学部生
+%\institute{東北大学 大学院 情報科学研究科\\情報基礎科学専攻}% 修士
+
+% 指導教員のお名前
+\supervisor{亀山 充隆 教授}% 指導教員
+\subsupervisor{住井 英二郎 准教授}% 論文指導教員(省略可)
+
+% 日付
+\date{\today}
+
+%% ===============================================
+%% ソースコードの設定
+%% ===============================================
+
+\usepackage{listings,jlisting}
+\usepackage{DejaVuSansMono}
+
+% プログラミング言語と表示するフォント等の設定
+\lstset{
+  language={[Objective]Caml},% プログラミング言語
+  basicstyle={\ttfamily\small},% ソースコードのテキストのスタイル
+  keywordstyle={\bfseries},% 予約語等のキーワードのスタイル
+  commentstyle={},% コメントのスタイル
+  stringstyle={},% 文字列のスタイル
+  frame=trlb,% ソースコードの枠線の設定 (none だと非表示)
+  numbers=left,% 行番号の表示 (none だと非表示)
+  numberstyle={\footnotesize},% 行番号のスタイル
+  xleftmargin=15pt,% 左余白
+  xrightmargin=5pt,% 右余白
+  keepspaces=true,% 空白を維持する
+  mathescape,% $ で囲った部分を数式として表示する ($ がソースコード中で使えなくなるので注意)
+  % 手動強調表示の設定
+  moredelim=[is][\bfseries]{@*}{*@},
+  moredelim=[is][\itshape]{@/}{/@}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+ステキな論文の概要
+\end{abstract}
+
+\chapter*{謝辞}
+
+ステキな論文の謝辞
+
+%% 目次
+\tableofcontents
+
+%% ここから本文
+
+\chapter{序論}
+
+序論とか本論とか結論とか \cite{TAPL}
+
+\chapter{本論}
+
+ソースコード\ref{src:listup_nodes}は二分木を深さ優先探索して、ノードを列挙する関数である。
+\begin{lstlisting}[caption=二分木のノードのリストアップ,label=src:listup_nodes]
+type 'a bin_tree =
+  | Leaf of 'a
+  | Node of 'a bin_tree * 'a bin_tree
+
+let rec listup_nodes = function
+  | Leaf x -> [x]
+  | Node (r, l) -> (listup_nodes r) @ (listup_nodes l)
+\end{lstlisting}
+ソースコードの書き方等については slide ブランチの slide.tex を参照されたし。
+
+\chapter{結論}
+
+%% 参考文献: bibtex (\cite が1つも無いとコンパイルエラーになるので注意)
+\bibliographystyle{junsrt}
+\bibliography{refs}
+
+\end{document}
