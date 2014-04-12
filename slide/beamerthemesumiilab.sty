@@ -1,3 +1,6 @@
+%% beamerthemesuiilab.sty
+%% 住井研究室のステキな Beamer テーマ
+
 \mode<presentation>
 
 \usefonttheme{default}
@@ -13,14 +16,14 @@
 \usefonttheme[onlymath]{serif}
 \renewcommand{\kanjifamilydefault}{\gtdefault}
 
-%% page numbers
+%% footline
 \setbeamertemplate{footline}[frame number]
 \setbeamerfont{footline}{size=\footnotesize,series=\bfseries}
 \setbeamercolor{footline}{fg=black,bg=black}
 
 %% itemize/enumerate/toc
 \setbeamertemplate{itemize items}[circle]
-%\setbeamertemplate{enumerate item}[circle]
+\setbeamertemplate{enumerate item}[circle]
 \setbeamerfont{itemize/enumerate body}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
@@ -48,6 +51,7 @@
 \newcommand\insertsession{}
 \newcommand\session[1]{\gdef\insertsession{#1}}
 
+\setbeamercolor{title}{bg=gray!30!white}
 \setbeamerfont{date}{size=\footnotesize}
 \setbeamerfont{author}{size=\small}
 \setbeamerfont{institute}{size=\small}
@@ -87,15 +91,16 @@
   \vfill
 }
 
-\renewcommand\today{\number\year 年 \number\month 月 \number\day 日}
+\renewcommand\today{\number\year{}年\number\month{}月\number\day{}日}
 
 %%
 %% appendix
 %%
 
+\renewcommand{\appendixname}{予備スライド}
+
 \let\org@appendix=\appendix
-\renewenvironment{appendix}[1][予備スライド]{%
-  \renewcommand{\appendixname}{#1}
+\renewenvironment{appendix}{%
   \newcounter{framenumberappendix}
   \setcounter{framenumberappendix}{\value{framenumber}}
   \org@appendix

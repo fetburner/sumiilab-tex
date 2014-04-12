@@ -49,6 +49,19 @@
   \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
 \end{frame}}
 
+%% 現在の section 以外を非表示にする場合は以下のようにする
+
+%% \AtBeginSection[]{
+%% \begin{frame}
+%%   \frametitle{アウトライン}
+%%   \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
+%% \end{frame}}
+%% \AtBeginSubsection[]{
+%% \begin{frame}
+%%   \frametitle{アウトライン}
+%%   \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+%% \end{frame}}
+
 %% ===============================================
 %% 定理環境の設定
 %% ===============================================
@@ -328,6 +341,9 @@ let fact n
 
 %% 予備スライドは appendix 環境の中に書きましょう。
 \begin{appendix}
+
+%% 予備スライドの先頭に真っ黒のページを挟む（お好みで消去しても良い）
+{\setbeamercolor{background canvas}{bg=black}\frame[plain]{}}
 
 \section{予備のスライド}
 
