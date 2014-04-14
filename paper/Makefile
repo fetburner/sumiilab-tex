@@ -16,7 +16,7 @@ LATEX=platex --kanji=utf8 -interaction=nonstopmode -halt-on-error
 ## LaTeX は目次や文献参照、式番号参照などの解決のために複数回のコンパイルが必要です。
 all:
 	$(LATEX) $(FILE).tex
-	pbibtex $(FILE)
+	-pbibtex $(FILE)
 	$(LATEX) $(FILE).tex
 	$(LATEX) $(FILE).tex
 	dvipdfmx $(FILE).dvi
