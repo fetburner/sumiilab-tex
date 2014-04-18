@@ -1,6 +1,12 @@
 \documentclass{sumiilab-paper}
 %% uplatex を使う場合：
 % \documentclass[uplatex]{sumiilab-paper}
+\usepackage{amsmath,amssymb,amsfonts,theorem,ascmac,cases,bm}
+\usepackage{enumerate}
+
+%% ===============================================
+%% 論文の表紙に表示される情報
+%% ===============================================
 
 % 論文の年度と種類
 \paper{平成 n 年度 卒業論文}% 学部生
@@ -22,6 +28,37 @@
 
 % 日付
 \date{\today}
+
+%% ===============================================
+%% 定理環境の設定
+%% ===============================================
+
+%\theoremstyle{plain}%% 定義名の後に改行しない
+\theoremstyle{break}%% 定義名の後に改行する
+\theorembodyfont{\normalfont}%% 定理環境中で英字を斜体にしない
+
+\newtheorem{theorem}{定理}[chapter]
+%% 各環境の番号（定義1.1など）を環境の種類ごとに独立に割り振る．
+%% （定義1.1 の後に定理を置くと，定理1.1のようにカウントされる）
+\newtheorem{lemma}{補題}[chapter]
+\newtheorem{corollary}{系}[chapter]
+\newtheorem{proposition}{命題}[chapter]
+\newtheorem{definition}{定義}[chapter]
+\newtheorem{axiom}{公理}[chapter]
+\newtheorem{proof}{証明}[chapter]
+%% 各環境の番号（定義1.1など）を環境の種類に関係なく，共通で割り振る場合は
+%% 上の lemma から proof までの定義をコメントアウトして，以下のコードの
+%% コメントアウトを解除する．
+%% （定義1.1 の後に定理を置くと，定理1.2のようにカウントされる）
+%\newtheorem{lemma}[theorem]{補題}
+%\newtheorem{corollary}[theorem]{系}
+%\newtheorem{proposition}[theorem]{命題}
+%\newtheorem{definition}[theorem]{定義}
+%\newtheorem{axiom}[theorem]{公理}
+%\newtheorem{proof}[theorem]{証明}
+
+%% 証明の終了記号
+\newcommand{\qed}{\hfill $\Box$}
 
 %% ===============================================
 %% ソースコードの設定
@@ -70,6 +107,36 @@
 %% 参考文献は \cite{ID} とします（ID は refs.bib 内で文献につけた識別子）
 %% BibTeX の使い方などは各自調べて下さい。
 序論とか本論とか結論とか \cite{TAPL}
+
+\section{定理環境}
+
+\begin{theorem}[定理のタイトル]
+  定理の内容
+\end{theorem}
+
+\begin{lemma}[補題のタイトル]
+  補題の内容
+\end{lemma}
+
+\begin{corollary}[系のタイトル]
+  系の内容
+\end{corollary}
+
+\begin{proposition}[命題のタイトル]
+  命題の内容
+\end{proposition}
+
+\begin{definition}[定義のタイトル]
+  定義の内容
+\end{definition}
+
+\begin{axiom}[公理のタイトル]
+  公理の内容
+\end{axiom}
+
+\begin{proof}[証明のタイトル]
+  証明の内容 \qed
+\end{proof}
 
 \chapter{本論}
 
