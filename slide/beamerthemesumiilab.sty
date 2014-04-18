@@ -23,7 +23,7 @@
 
 %% itemize/enumerate/toc
 \setbeamertemplate{itemize items}[circle]
-\setbeamertemplate{enumerate item}[circle]
+%%\setbeamertemplate{enumerate item}[circle]
 \setbeamerfont{itemize/enumerate body}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
@@ -51,7 +51,6 @@
 \newcommand\insertsession{}
 \newcommand\session[1]{\gdef\insertsession{#1}}
 
-\setbeamercolor{title}{bg=gray!30!white}
 \setbeamerfont{date}{size=\footnotesize}
 \setbeamerfont{author}{size=\small}
 \setbeamerfont{institute}{size=\small}
@@ -72,7 +71,7 @@
       \usebeamerfont{title}\inserttitle\par%
       \ifx\insertsubtitle\@empty%
       \else%
-        \vskip0.25em%
+        \vskip0.75em%
         {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
       \fi%
     \end{beamercolorbox}%
