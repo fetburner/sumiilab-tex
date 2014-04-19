@@ -1,7 +1,7 @@
 \documentclass{sumiilab-paper}
 %% uplatex を使う場合：
 % \documentclass[uplatex]{sumiilab-paper}
-\usepackage{amsmath,amssymb,amsfonts,theorem,ascmac,cases,bm}
+\usepackage{amsmath,amssymb,amsfonts,ascmac,cases,bm}
 \usepackage{enumerate}
 
 %% ===============================================
@@ -26,46 +26,15 @@
 \supervisor{亀山 充隆 教授}% 指導教員
 \subsupervisor{住井 英二郎 准教授}% 論文指導教員(省略可)
 
-% 日付
-\date{\today}
-
-%% ===============================================
-%% 定理環境の設定
-%% ===============================================
-
-%\theoremstyle{plain}%% 定義名の後に改行しない
-\theoremstyle{break}%% 定義名の後に改行する
-\theorembodyfont{\normalfont}%% 定理環境中で英字を斜体にしない
-
-\newtheorem{theorem}{定理}[chapter]
-%% 各環境の番号（定義1.1など）を環境の種類ごとに独立に割り振る．
-%% （定義1.1 の後に定理を置くと，定理1.1のようにカウントされる）
-\newtheorem{lemma}{補題}[chapter]
-\newtheorem{corollary}{系}[chapter]
-\newtheorem{proposition}{命題}[chapter]
-\newtheorem{definition}{定義}[chapter]
-\newtheorem{axiom}{公理}[chapter]
-\newtheorem{proof}{証明}[chapter]
-%% 各環境の番号（定義1.1など）を環境の種類に関係なく，共通で割り振る場合は
-%% 上の lemma から proof までの定義をコメントアウトして，以下のコードの
-%% コメントアウトを解除する．
-%% （定義1.1 の後に定理を置くと，定理1.2のようにカウントされる）
-%\newtheorem{lemma}[theorem]{補題}
-%\newtheorem{corollary}[theorem]{系}
-%\newtheorem{proposition}[theorem]{命題}
-%\newtheorem{definition}[theorem]{定義}
-%\newtheorem{axiom}[theorem]{公理}
-%\newtheorem{proof}[theorem]{証明}
-
-%% 証明の終了記号
-\newcommand{\qed}{\hfill $\Box$}
+% 論文発表日
+\date{平成 n 年1月1日}
 
 %% ===============================================
 %% ソースコードの設定
 %% ===============================================
 
 \usepackage{listings,jlisting}
-\usepackage{DejaVuSansMono}
+%\usepackage{DejaVuSansMono}
 
 % プログラミング言語と表示するフォント等の設定
 \lstset{
@@ -108,6 +77,22 @@
 %% BibTeX の使い方などは各自調べて下さい。
 序論とか本論とか結論とか \cite{TAPL}
 
+\chapter{本論}
+
+\section{ソースコード}
+
+ソースコード\ref{src:listup_nodes}は二分木を深さ優先探索して、ノードを列挙する関数である。
+\begin{lstlisting}[caption=二分木のノードのリストアップ,label=src:listup_nodes]
+type 'a bin_tree =
+  | Leaf of 'a
+  | Node of 'a bin_tree * 'a bin_tree
+
+let rec listup_nodes = function
+  | Leaf x -> [x]
+  | Node (r, l) -> (listup_nodes r) @ (listup_nodes l)
+\end{lstlisting}
+ソースコードの書き方等については slide ブランチの slide.tex を参照されたし。
+
 \section{定理環境}
 
 \begin{theorem}[定理のタイトル]
@@ -130,6 +115,14 @@
   定義の内容
 \end{definition}
 
+\begin{example}[例のタイトル]
+  例の内容
+\end{example}
+
+\begin{assumption}[仮定のタイトル]
+  仮定の内容
+\end{assumption}
+
 \begin{axiom}[公理のタイトル]
   公理の内容
 \end{axiom}
@@ -138,23 +131,9 @@
   証明の内容 \qed
 \end{proof}
 
-\chapter{本論}
-
-ソースコード\ref{src:listup_nodes}は二分木を深さ優先探索して、ノードを列挙する関数である。
-\begin{lstlisting}[caption=二分木のノードのリストアップ,label=src:listup_nodes]
-type 'a bin_tree =
-  | Leaf of 'a
-  | Node of 'a bin_tree * 'a bin_tree
-
-let rec listup_nodes = function
-  | Leaf x -> [x]
-  | Node (r, l) -> (listup_nodes r) @ (listup_nodes l)
-\end{lstlisting}
-ソースコードの書き方等については slide ブランチの slide.tex を参照されたし。
-
 \chapter{結論}
 
-%% 参考文献: bibtex (\cite が1つも無いとコンパイルエラーになるので注意)
+%% 参考文献: bibtex
 \bibliographystyle{junsrt}
 \bibliography{refs}
 
