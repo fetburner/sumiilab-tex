@@ -3,8 +3,7 @@
 %%
 
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesClass{sumiilab-paper}
-  [2014/2/27 aabe]
+\ProvidesClass{sumiilab-paper}[2014/4/20 aabe]
 
 %% ===============================================
 %% Options
@@ -26,13 +25,15 @@
 \def\slp@jclass{jreport}
 \DeclareOption{uplatex}{\gdef\slp@jclass{ujreport}}
 
-\newif\if@deftheorem\@deftheoremtrue
+\newif\if@notheorems\@notheoremsfalse
 \def\slp@theoremstyle{plain}
-\DeclareOption{theorem=no}{\@deftheoremfalse}
-\DeclareOption{theorem=plain}{\gdef\slp@theoremstyle{plain}}
-\DeclareOption{theorem=break}{\gdef\slp@theoremstyle{break}}
-\DeclareOption{theorem=margin}{\gdef\slp@theoremstyle{margin}}
-\DeclareOption{theorem=marginbreak}{\gdef\slp@theoremstyle{marginbreak}}
+\DeclareOption{notheorems}{\@notheoremstrue}
+\DeclareOption{theoremstyle=plain}{\gdef\slp@theoremstyle{plain}}
+\DeclareOption{theoremstyle=break}{\gdef\slp@theoremstyle{break}}
+\DeclareOption{theoremstyle=change}{\gdef\slp@theoremstyle{change}}
+\DeclareOption{theoremstyle=changebreak}{\gdef\slp@theoremstyle{changebreak}}
+\DeclareOption{theoremstyle=margin}{\gdef\slp@theoremstyle{margin}}
+\DeclareOption{theoremstyle=marginbreak}{\gdef\slp@theoremstyle{marginbreak}}
 
 \newif\if@sharedthmnum
 \DeclareOption{sharedthmnum}{\@sharedthmnumtrue}
@@ -119,7 +120,7 @@
 %% Theorems
 %% ===============================================
 
-\if@deftheorem
+\if@notheorems\else
   \usepackage{theorem}
   \theoremstyle{\slp@theoremstyle}
 
