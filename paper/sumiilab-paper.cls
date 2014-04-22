@@ -38,6 +38,9 @@
 \newif\if@sharedthmnum
 \DeclareOption{sharedthmnum}{\@sharedthmnumtrue}
 
+\newif\if@nolistings\@nolistingsfalse
+\DeclareOption{nolistings}{\@nolistingstrue}
+
 \ExecuteOptions{japanese,final,11pt}
 \ProcessOptions
 
@@ -124,35 +127,54 @@
   \usepackage{theorem}
   \theoremstyle{\slp@theoremstyle}
 
-  \let\slp@newtheorem=\newtheorem
-  \renewcommand{\newtheorem}[2]{%
+  \let\thm@newtheorem=\newtheorem% The original \newtheorem of theorem.sty
+  \renewcommand{\newtheorem}{\@ifstar\@@newtheorem\@newtheorem}% frontend
+  \newcommand{\@newtheorem}[2]{% normal \newtheorem
     \if@sharedthmnum%
-      \slp@newtheorem{#1}[theorem]{#2}%
+      \thm@newtheorem{#1}[theorem]{#2}%
     \else%
-      \slp@newtheorem{#1}{#2}[chapter]%
+      \thm@newtheorem{#1}{#2}[chapter]%
     \fi}
+  \newcommand{\@@newtheorem}[2]{% starred \newtheorem
+    \thm@newtheorem{#1}{#2}%
+    \expandafter\gdef\csname the#1\endcsname{}}
+
+  \newcommand{\both@newtheorem}[2]{%
+    \newtheorem{#1}{#2}%
+    \newtheorem*{#1*}{#2}}
 
   \if@japanese%% JAPANESE
     \theorembodyfont{\normalfont}
-    \slp@newtheorem{theorem}{定理}[chapter]
-    \newtheorem{lemma}{補題}
-    \newtheorem{corollary}{系}
-    \newtheorem{proposition}{命題}
-    \newtheorem{definition}{定義}
-    \newtheorem{example}{例}
-    \newtheorem{assumption}{仮定}
-    \newtheorem{axiom}{公理}
-    \newtheorem{proof}{証明}
+    \thm@newtheorem{theorem}{定理}[chapter]
+    \both@newtheorem{lemma}{補題}
+    \both@newtheorem{corollary}{系}
+    \both@newtheorem{proposition}{命題}
+    \both@newtheorem{definition}{定義}
+    \both@newtheorem{example}{例}
+    \both@newtheorem{assumption}{仮定}
+    \both@newtheorem{axiom}{公理}
+    \both@newtheorem{proof}{証明}
   \else%% ENGLISH
-    \slp@newtheorem{theorem}{Theorem}[chapter]
-    \newtheorem{lemma}{Lemma}
-    \newtheorem{corollary}{Corollary}
-    \newtheorem{proposition}{Proposition}
-    \newtheorem{definition}{Definition}
-    \newtheorem{example}{Example}
-    \newtheorem{assumption}{Assumption}
-    \newtheorem{axiom}{Axiom}
-    \newtheorem{proof}{Proof}
+    \thm@newtheorem{theorem}{Theorem}[chapter]
+    \both@newtheorem{lemma}{Lemma}
+    \both@newtheorem{corollary}{Corollary}
+    \both@newtheorem{proposition}{Proposition}
+    \both@newtheorem{definition}{Definition}
+    \both@newtheorem{example}{Example}
+    \both@newtheorem{assumption}{Assumption}
+    \both@newtheorem{axiom}{Axiom}
+    \both@newtheorem{proof}{Proof}
   \fi
   \newcommand{\qed}{\hfill $\Box$}
+\fi
+
+%% ===============================================
+%% Listings
+%% ===============================================
+
+\if@nolistings\else
+  \usepackage{listings}
+  \if@japanese
+    \usepackage{jlisting}
+  \fi
 \fi
