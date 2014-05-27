@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e # コマンドが失敗した時点でスクリプトの実行を止める
+set -u # 未定義変数を参照した時点でスクリプトの実行を止める
+
 echo_with_dots () {
     str=$1
     for (( i=${#1}; i<50; i++ )); do
@@ -33,18 +36,10 @@ check_sty () {
     fi
 }
 
-## スタイルファイルが正しくインストールされているか確認し，
-## うまくいってなければエラーで終了
-check_sty_was_installed () {
-    if ! check_sty "$1"; then
-        echo "** ERROR ** Sorry! Failed to install \`$1'"
-        exit 1
-    fi
-}
-
 ## インストールに必要なコマンドの存在確認
 check_command wget
 check_command bunzip2
+check_command unzip
 check_command git
 check_command kpsewhich
 check_command mktexlsr
@@ -84,10 +79,7 @@ cd "$WORKDIR"       # ワーキングディレクトリに移動して作業
 if ! check_sty 'jlisting.sty'; then
     wget 'http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Fmytexpert%2F26068%2Fjlisting.sty.bz2' -O jlisting.sty.bz2
     bunzip2 jlisting.sty.bz2
-    mkdir -p "$TEXDIR/platex/jlisting"
-    mv jlisting.sty "$TEXDIR/platex/jlisting"
-
-    check_sty_was_installed 'jlisting.sty' # 正しくインストールされたか確認
+    install -D -m 0644 "$TEXDIR/platex/jlisting/jlisting.sty"
 fi
 
 ##
@@ -100,10 +92,55 @@ fi
 ##
 if ! check_sty 'pxjahyper.sty'; then
     git clone 'https://github.com/zr-tex8r/PXjahyper'
-    mkdir -p "$TEXDIR/platex/pxjahyper"
-    mv PXjahyper/pxjahyper.sty "$TEXDIR/platex/pxjahyper"
+    install -D -m 0644 PXjahyper/pxjahyper.sty "$TEXDIR/platex/pxjahyper/pxjahyper.sty"
+fi
 
-    check_sty_was_installed 'pxjahyper.sty' # 正しくインストールされたか確認
+##
+## algorithmic.sty, algorithm.sty
+##
+##   擬似コードでアルゴリズムを記述するためのスタイルファイル
+##   参考: http://mirror.math.ku.edu/tex-archive/macros/latex/contrib/algorithms/algorithms.pdf
+##
+if ! (check_sty 'algorithmic.sty' && check_sty 'algorithm.sty'); then
+    wget 'http://mirrors.ctan.org/macros/latex/contrib/algorithms.zip' -O algorithms.zip
+    unzip algorithms.zip
+    (cd algorithms
+     latex -halt-on-error -interaction=nonstopmode algorithms.ins
+     install -D -m 0644 algorithmic.sty "$TEXDIR/latex/algorithms/algorithmic.sty"
+     install -D -m 0644 algorithm.sty "$TEXDIR/latex/algorithms/algorithm.sty")
+fi
+
+##
+## proof.sty
+##
+##   証明図や導出規則を TeX で記述するためのスタイルファイル．
+##   参考: http://research.nii.ac.jp/~tatsuta/proof-sty.html
+##
+if ! check_sty 'proof.sty'; then
+    wget 'http://research.nii.ac.jp/~tatsuta/proof.sty' -O proof.sty
+    install -D -m 0644 ./proof.sty "$TEXDIR/latex/proof/proof.sty"
+fi
+
+##
+## bcprules.sty
+##
+##   あの Benjamin C. Pierce が作った，導出規則を TeX で記述するためのスタイルファイル．
+##   有名なので入れておく．
+##
+if ! check_sty 'bcprules.sty'; then
+    wget 'http://www.cis.upenn.edu/~bcpierce/papers/bcprules.sty' -O bcprules.sty
+    install -D -m 0644 ./bcprules.sty "$TEXDIR/latex/bcprules/bcprules.sty"
+fi
+
+##
+## bussproofs.sty
+##
+##   これも証明図や導出規則を書くための有名なスタイルファイル．
+##   参考: http://math.ucsd.edu/~sbuss/ResearchWeb/bussproofs/
+##
+if ! check_sty 'bussproofs.sty'; then
+    wget 'http://math.ucsd.edu/~sbuss/ResearchWeb/bussproofs/bussproofs.sty' -O bussproofs.sty
+    install -D -m 0644 ./bussproofs.sty "$TEXDIR/latex/bussproofs/bussproofs.sty"
 fi
 
 mktexlsr # TeX 関連ファイルのインデックスを更新
