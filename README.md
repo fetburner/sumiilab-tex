@@ -123,10 +123,31 @@ Adobe Reader (acroread) や evince で，ちゃんと表示できれば成功で
 
 - paper.tex はクラスファイルの使用例を兼ねたテンプレートです．
   これを改造すれば論文が書けます．
-- 参考文献は refs.bib に追加しましょう．
-  「文献の名称 + bibtex」でググると，大抵は BibTeX の書き方が出てくるので，
-  それを流用するといいでしょう．
 - 論文クラスファイル自体の機能については [PAPER.md](PAPER.md) を参照して下さい．
+- 参考文献は refs.bib に追加しましょう．
+  「文献の著者(or 題名) + DBLP + bibtex」でググると，大抵は BibTeX の書き方が出てくるので，
+  それを流用するといいでしょう．
+
+【注意】 DBLP の BibTeX データは比較的信頼できますが，ときどき間違っています．
+特に，固有名詞の中で大文字になるべき文字が小文字になっていることが多いです
+（例えば，OCaml が ocaml になっていたり，SML が sml になっていたりなど）．
+BibTeX は文献題目などの先頭以外の文字を勝手に小文字に変換するので，
+大文字にしたいところを明示的に `{...}` で囲む必要があることに，注意して下さい．
+例えば，
+
+    @article{DBLP:...
+    author = {John Smith},
+    title  = {Functional programming on OCaml},
+    ...}
+
+と書いてあった場合，参考文献のタイトルが "Functional programming on ocaml" になってしまうので，
+
+    @article{DBLP:...
+    author = {John Smith},
+    title  = {Functional programming on {OC}aml},
+    ...}
+
+と書き直します．
 
 ぜひ，ステキな論文を書いて下さい．
 
