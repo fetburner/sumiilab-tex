@@ -227,14 +227,14 @@ BibTeX は文献題目などの先頭以外の文字を勝手に小文字に変�
 
     @article{...,
     author = {John Smith},
-    title  = {Functional programming on OCaml},
+    title  = {Functional programming in OCaml},
     ...}
 
-と書いてあった場合，参考文献のタイトルが "Functional programming on ocaml" になってしまうので，
+と書いてあった場合，参考文献のタイトルが "Functional programming in ocaml" になってしまうので，
 
     @article{...,
     author = {John Smith},
-    title  = {Functional programming on {OC}aml},
+    title  = {Functional programming in {OC}aml},
     ...}
 
 と書き直します．
@@ -293,7 +293,7 @@ LaTeX の文書作成に有用な（と思われる）資料です．
   自分で `usepackage` する必要はありません．
   - [Listings - MyTeXpert](http://mytexpert.sourceforge.jp/index.php?Listings):
     `lstset` による体裁の設定の具体例が沢山載っています．
-  - [The Listings Package](ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf):
+  - The Listings Package ( ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf ):
     公式のドキュメントで，非常に詳細な情報が載っています．
 - アルゴリズム（擬似コード）の書き方：algorithmic.sty と algorithm.sty を使いましょう．
   ググると比較的分かりやすい Web ページが多数ヒットします．
