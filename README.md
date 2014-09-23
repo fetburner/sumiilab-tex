@@ -123,17 +123,17 @@ sumiilab-tex リポジトリは時々アップデートされるかもしれま�
 出来上がっていることでしょう．
 
     $ ls
-    Makefile paper.pdf paper.tex ...
+    Makefile slide.pdf ...
 
 PDF ファイルをちゃんと表示できれば成功です．
 
-    $ evince paper.pdf &
+    $ evince slide.pdf &
 
 evince は Debian に標準でインストールされているドキュメント・ビューアで，
 tex ファイルを再コンパイルしたときに，勝手にリロードして，表示を更新してくれるので便利です．
 もしも，日本語が文字化けしたりして，うまく表示できないときは，純正の Adobe Reader を使いましょう．
 
-    $ acroread paper.pdf &
+    $ acroread slide.pdf &
 
 もし，純正の Adobe Reader でも文字化けするようなら，フォントの設定がおかしいか，
 うまくインストールできなかった可能性があります．ググるか，詳しい人に聞いて直しましょう．
