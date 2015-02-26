@@ -63,6 +63,7 @@
 \newcommand{\subsupervisor}[1]{\gdef\@subsupervisor{#1}}
 \newcommand{\supervisorname}[1]{\gdef\@supervisorname{#1}}
 \newcommand{\subsupervisorname}[1]{\gdef\@subsupervisorname{#1}}
+\newcommand{\venue}[1]{\gdef\@venue{#1}}
 
 \renewenvironment{abstract}{\chapter*{\@abstractname}}{}
 
@@ -115,7 +116,7 @@
         \fi
       \end{tabular}
       \vskip\slp@tpvsep
-      \@date% date
+      \@date\\\@venue% date and venue
     }\end{center}
   \end{titlepage}}
 
