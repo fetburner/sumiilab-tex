@@ -22,8 +22,8 @@
 \DeclareOption{draft}{\@drafttrue}
 \DeclareOption{final}{\@draftfalse}
 
-\def\slp@jclass{jreport}
-\DeclareOption{uplatex}{\gdef\slp@jclass{ujreport}}
+\newif\if@uplatex\@uplatexfalse
+\DeclareOption{uplatex}{\@uplatextrue}
 
 \newif\if@notheorems\@notheoremsfalse
 \def\slp@theoremstyle{plain}
@@ -44,9 +44,10 @@
 \ExecuteOptions{japanese,final,11pt}
 \ProcessOptions
 
-\LoadClass[a4j,\slp@ptsize%
+\LoadClass[\slp@ptsize%
 \if@draft ,draft\else ,final\fi%
-]{\if@japanese\slp@jclass\else report\fi}
+\if@japanese ,a4j,report\if@uplatex ,uplatex\fi\fi%
+]{\if@japanese jsbook\else report\fi}
 
 %% ===============================================
 %% Style
