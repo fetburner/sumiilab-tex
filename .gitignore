@@ -31,3 +31,8 @@
 *.vrb
 *.xdy
 *.tdo
+*.fls
+
+*.omc
+.omakedb
+.omakedb.lock
