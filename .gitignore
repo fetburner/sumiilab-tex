@@ -36,3 +36,4 @@
 *.omc
 .omakedb
 .omakedb.lock
+*/auto/

@@ -8,7 +8,7 @@
 \useinnertheme{default}
 \useoutertheme{default}
 
-\setbeamersize{text margin left=.75zw,text margin right=.75zw}
+\setbeamersize{text margin left=1em,text margin right=1em}
 \setbeamertemplate{navigation symbols}{}
 
 %% fonts
@@ -35,13 +35,13 @@
 %%
 
 \setbeamertemplate{blocks}[rounded][shadow=true]
-\setbeamercolor{block title}{family={\bf},fg=white,bg=structure}
+\setbeamercolor{block title}{fg=white,bg=structure}
 \setbeamercolor{block body}{bg=structure!10}
 
-\setbeamercolor{block title example}{family={\bf},fg=white,bg=OliveGreen}
+\setbeamercolor{block title example}{fg=white,bg=OliveGreen}
 \setbeamercolor{block body example}{use=block title example,bg=block title example.bg!10!white}
 
-\setbeamercolor{block title alerted}{family={\bf},fg=white,bg=BrickRed}
+\setbeamercolor{block title alerted}{fg=white,bg=BrickRed}
 \setbeamercolor{block body alerted}{use=block title alerted,bg=block title alerted.bg!10!white}
 
 %%
@@ -51,6 +51,9 @@
 \newcommand\insertsession{}
 \newcommand\session[1]{\gdef\insertsession{#1}}
 
+\setbeamertemplate{background canvas}[vertical shading][bottom=white,top=gray!15]
+\setbeamercolor{frametitle}{bg=structure,fg=white}
+\setbeamerfont{title}{size=\Large}
 \setbeamerfont{date}{size=\footnotesize}
 \setbeamerfont{author}{size=\small}
 \setbeamerfont{institute}{size=\small}
