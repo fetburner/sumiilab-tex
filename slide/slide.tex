@@ -1,10 +1,13 @@
-\documentclass[dvipdfmx,cjk,xcolor=dvipsnames,envcountsect,notheorems]{beamer}
+\documentclass[cjk,xcolor=dvipsnames,envcountsect,notheorems]{beamer}
 % * 16:9 のスライドを作るときは、aspectratio=169 を documentclass のオプションに追加する
 % * 印刷用の配布資料を作るときは handout を documentclass のオプションに追加する
 %   （overlay が全て一つのスライドに出力される）
 
+\graphicspath{ {./images/} }
+\hypersetup{unicode=true}% しおりの文字化け対策
+\usepackage[no-math]{fontspec}
+\usepackage{luatexja,luatexja-fontspec}
 \usepackage{amsmath,amssymb,amsfonts,amsthm,ascmac,cases,bm,pifont}
-\usepackage{pxjahyper}% しおりの文字化け対策 (なくても良い)
 \usepackage{graphicx}
 \usepackage{url}
 
@@ -14,6 +17,13 @@
 %\usecolortheme[named=Magenta]{structure}
 % 数式の文字が細くて見難い時は serif の代わりに bold にしましょう
 %\mathversion{bold}
+
+% フォントの設定
+\setmainfont[Ligatures=TeX]{TeXGyreTermes}
+\setsansfont[Ligatures=TeX]{TeXGyreHeros}
+\setmainjfont{RictyDiminished}
+\setsansjfont{RictyDiminished}
+%\setmainjfont[BoldFont=RictyDiminished-Bold]{RictyDiminished-Regular}
 
 %% ===============================================
 %% スライドの表紙および PDF に表示される情報
