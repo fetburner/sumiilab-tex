@@ -35,9 +35,6 @@
 \DeclareOption{theoremstyle=margin}{\gdef\slp@theoremstyle{margin}}
 \DeclareOption{theoremstyle=marginbreak}{\gdef\slp@theoremstyle{marginbreak}}
 
-\newif\if@sharedthmnum
-\DeclareOption{sharedthmnum}{\@sharedthmnumtrue}
-
 \newif\if@nolistings\@nolistingsfalse
 \DeclareOption{nolistings}{\@nolistingstrue}
 
@@ -131,12 +128,7 @@
 
   \let\thm@newtheorem=\newtheorem% The original \newtheorem of theorem.sty
   \renewcommand{\newtheorem}{\@ifstar\@@newtheorem\@newtheorem}% frontend
-  \newcommand{\@newtheorem}[2]{% normal \newtheorem
-    \if@sharedthmnum%
-      \thm@newtheorem{#1}[theorem]{#2}%
-    \else%
-      \thm@newtheorem{#1}{#2}[chapter]%
-    \fi}
+  \newcommand{\@newtheorem}[2]{\thm@newtheorem{#1}[theorem]{#2}}
   \newcommand{\@@newtheorem}[2]{% starred \newtheorem
     \thm@newtheorem{#1}{#2}%
     \expandafter\gdef\csname the#1\endcsname{}}

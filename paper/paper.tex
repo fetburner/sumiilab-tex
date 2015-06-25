@@ -1,4 +1,4 @@
-\documentclass[sharedthmnum]{sumiilab-paper}
+\documentclass{sumiilab-paper}
 %% uplatex を使う場合：
 % \documentclass[uplatex]{sumiilab-paper}
 \usepackage{amsmath,amssymb,amsfonts,ascmac,cases,bm}
@@ -21,12 +21,12 @@
 \author{X0XX1234 ラムダ 小太郎}
 
 % 著者の所属
-\institute{東北大学 工学部\\情報知能システム総合学科}% 学部生
-%\institute{東北大学 大学院 情報科学研究科\\情報基礎科学専攻}% 修士
+\institute{東北大学 工学部\\電気情報物理工学科}% 学部生
+%\institute{東北大学 大学院\\情報科学研究科 情報基礎科学専攻}% 修士
 
 % 指導教員のお名前
 \supervisor{住井 英二郎 教授}% 指導教員
-%\subsupervisor{xxx xxx 准教授}% 論文指導教員(省略可)
+\subsupervisor{松田 一孝 准教授}% 論文指導教員(省略可)
 
 % 論文発表日時
 \date{平成 n 年1月1日 \quad 23:00--23:30}
@@ -60,16 +60,17 @@
 %% 論文中で使う記号とかのマクロ定義
 %% ===============================================
 
-%% 論文中で繰り返し使う記号は次のように「マクロ」として実装しておくと良い．
-%% TeX ソース中で \BOOL と書くと，\texttt{Bool} に置き換えてくれる．
-%% フォントを変え忘れたりするリスクが減るし，あとから記号を変更するのも楽になる．
+%% 論文中で繰り返し使う記号は次のように「マクロ」として実装しておくと良い。
+%% TeX ソース中で \BOOL と書くと、\texttt{Bool} に置き換えてくれる。
+%% フォントを変え忘れたりするリスクが減るし、あとから記号を変更するのも楽になる。
 
-\newcommand{\BOOL}{\texttt{Bool}}
-\newcommand{\TRUE}{\texttt{true}}
-\newcommand{\FALSE}{\texttt{false}}
-\newcommand{\IF}{\texttt{if}}
-\newcommand{\THEN}{\texttt{then}}
-\newcommand{\ELSE}{\texttt{else}}
+\newcommand{\keyword}[1]{\mathbf{#1}}
+\newcommand{\BOOL}{\keyword{Bool}}
+\newcommand{\TRUE}{\keyword{true}}
+\newcommand{\FALSE}{\keyword{false}}
+\newcommand{\IF}{\keyword{if}}
+\newcommand{\THEN}{\keyword{then}}
+\newcommand{\ELSE}{\keyword{else}}
 
 \begin{document}
 \maketitle
@@ -97,16 +98,16 @@
 
 \section{BNF の書き方の例}
 
-本節では，BNF によるプログラミング言語の構文の書き方を紹介する．
-構文木の書き方は一つというわけではないので，幾つかのバリエーションを紹介する．
-どの方法が良いと思うかは，個人の好みに依るところなので，好きなものを使えば良いと思う．
+本節では、BNF によるプログラミング言語の構文の書き方を紹介する。
+構文木の書き方は一つというわけではないので、幾つかのバリエーションを紹介する。
+どの方法が良いと思うかは、個人の好みに依るところなので、好きなものを使えば良いと思う。
 
-まず，次の方法では，array 環境を使って，BNF を書いている．
-array 環境は数式環境中で表のようなものを書くときに使う．
-基本的に，table 環境と使い方は同じである．
+まず、次の方法では、array 環境を使って、BNF を書いている。
+array 環境は数式環境中で表のようなものを書くときに使う。
+基本的に、table 環境と使い方は同じである。
 \[
-%% 空白を明示的に開けるときは "\," "\ " "~" "\quad" "\qquad" などを使う．
-%% 空白の幅は "\qquad" > "\quad" > "~" = "\ " > "\," の順で大きい．
+%% 空白を明示的に開けるときは "\," "\ " "~" "\quad" "\qquad" などを使う。
+%% 空白の幅は "\qquad" > "\quad" > "~" = "\ " > "\," の順で大きい。
 %% "~" と "\ " は空白の代わりに改行を許すかどうかの違い（"\ " だと改行される可能性がある）
 \begin{array}{rl@{\qquad\qquad}r}
   t ::=
@@ -120,7 +121,7 @@ array 環境は数式環境中で表のようなものを書くときに使う�
 \end{array}
 \]
 
-他にも，次のように，align 環境を使っても，似たようなものを書くことができる．
+他にも、次のように、align 環境を使っても、似たようなものを書くことができる。
 \begin{align}
   t ::=
   & \tag*{terms:} \\
@@ -131,14 +132,14 @@ array 環境は数式環境中で表のようなものを書くときに使う�
   & \FALSE \tag*{false} \\
   & \IF~t_1~\THEN~t_2~\ELSE~t_3 \tag*{if statement}
 \end{align}
-array 環境を愚直に使う場合と比べて，式が中央揃えになるという点と，
-``variables'' とかの説明が右端に来ている点が違う．
-説明は tag* マクロで出しており，これはもともと式番号を指定するためのものなので，
-若干使い方がおかしい気もするが，まぁ，いいだろう．
-自分の好みの方を使うと良いだろう．
+array 環境を愚直に使う場合と比べて、式が中央揃えになるという点と、
+``variables'' とかの説明が右端に来ている点が違う。
+説明は tag* マクロで出しており、これはもともと式番号を指定するためのものなので、
+若干使い方がおかしい気もするが、まぁ、いいだろう。
+自分の好みの方を使うと良いだろう。
 
-BNF 全体を左揃えにしたいならば，次のように，flalign 環境を使うと良い．
-align 環境と違って，\verb|&| を余分に1つ付ける必要がある，ということに注意して欲しい（詳しくはソースコードを見よ）．
+BNF 全体を左揃えにしたいならば、次のように、flalign 環境を使うと良い。
+align 環境と違って、\verb|&| を余分に1つ付ける必要がある、ということに注意して欲しい（詳しくはソースコードを見よ）。
 \begin{flalign}
   t ::=
   & & \tag*{terms:} \\ % & を余分に1つ付けること！
@@ -152,24 +153,24 @@ align 環境と違って，\verb|&| を余分に1つ付ける必要がある，�
 
 \section{導出木の書き方の例}
 
-導出木の書き方も色々あるが，ここでは，bussproofs.sty を使った方法を紹介する．
-導出木は，手書きでも書きにくいが，\LaTeX だから書きやすいというわけでもなく，
-（使うパッケージにも依るが）そこそこの苦労は必要である．
-bussproofs.sty を除く多くの方法では，frac などをベースに「分数」で導出木を書く．
-bussproofs.sty はこれらとは全く異なるインタフェースであり，慣れれば比較的解りやすい．
-bussproofs.sty の動作は，（導出木を要素とする）スタックをイメージすると解りやすい．
-よく使うマクロは次の通り．
+導出木の書き方も色々あるが、ここでは、bussproofs.sty を使った方法を紹介する。
+導出木は、手書きでも書きにくいが、\LaTeX だから書きやすいというわけでもなく、
+（使うパッケージにも依るが）そこそこの苦労は必要である。
+bussproofs.sty を除く多くの方法では、frac などをベースに「分数」で導出木を書く。
+bussproofs.sty はこれらとは全く異なるインタフェースであり、慣れれば比較的解りやすい。
+bussproofs.sty の動作は、（導出木を要素とする）スタックをイメージすると解りやすい。
+よく使うマクロは次の通り。
 \begin{itemize}
 \item \lstinline|\AxiomC{...}|：Axiom を push する（導出木では葉に相当）
-\item \lstinline|\UnaryInfC{...}|：スタックから部分導出木（仮定）を1つ pop して，
-  それを新たに作ったノード（結論）の子供にすることで，新たな部分導出木を作成し，push する．
-\item \lstinline|\BinaryInfC{...}|：スタックから部分導出木（仮定）を2つ pop して，
-  \lstinline|\UnaryInfC| と同様の動作を行う．
-\item \lstinline|\TrinaryInfC{...}|：スタックから部分導出木（仮定）を3つ pop して，
-  \lstinline|\UnaryInfC| と同様の動作を行う．
+\item \lstinline|\UnaryInfC{...}|：スタックから部分導出木（仮定）を1つ pop して、
+  それを新たに作ったノード（結論）の子供にすることで、新たな部分導出木を作成し、push する。
+\item \lstinline|\BinaryInfC{...}|：スタックから部分導出木（仮定）を2つ pop して、
+  \lstinline|\UnaryInfC| と同様の動作を行う。
+\item \lstinline|\TrinaryInfC{...}|：スタックから部分導出木（仮定）を3つ pop して、
+  \lstinline|\UnaryInfC| と同様の動作を行う。
 \end{itemize}
 
-実際の使い方は以下の通り．
+実際の使い方は以下の通り。
 
 %% T-Var
 \begin{prooftree}
@@ -208,7 +209,7 @@ bussproofs.sty の動作は，（導出木を要素とする）スタックを�
 
 \section{定理環境}
 
-この論文クラスファイルでは，デフォルトで以下の定理環境を提供している．
+この論文クラスファイルでは、デフォルトで以下の定理環境を提供している。
 
 \begin{theorem}[定理のタイトル]
   定理の内容
@@ -247,37 +248,37 @@ bussproofs.sty の動作は，（導出木を要素とする）スタックを�
 \end{proof}
 
 \begin{proof*}[証明のタイトル]
-  証明の内容（番号なしの証明環境．証明を \lstinline|\ref| で参照する必要がないなら，こっちを使うほうが自然かも） \qed
+  証明の内容（番号なしの証明環境。証明を \lstinline|\ref| で参照する必要がないなら、こっちを使うほうが自然かも） \qed
 \end{proof*}
 
 \subsection{定理環境の使い方の例}
 
 \begin{lemma}
   \label{lem:interesting-lemma}
-  論文の中で最重要とは言えないような性質・命題は補題 (lamma) にする．
-  補題や定理から直ちに導けるような軽い命題は系 (corollary) にする（細かい使い分けは人による）．
+  論文の中で最重要とは言えないような性質・命題は補題 (lamma) にする。
+  補題や定理から直ちに導けるような軽い命題は系 (corollary) にする（細かい使い分けは人による）。
 \end{lemma}
 
 \begin{proof*}
-  \lstinline|proof*| のように，アスタリスク付きの環境では，番号が付かない．
+  \lstinline|proof*| のように、アスタリスク付きの環境では、番号が付かない。
 \end{proof*}
 
 \begin{theorem}
   \label{thm:wonderful-theorem}
-  提案手法の最も重要な性質や命題は，定理 (theorem) として書く．
-  読者の心をくすぐる興味深いステートメントを書こう．
+  提案手法の最も重要な性質や命題は、定理 (theorem) として書く。
+  読者の心をくすぐる興味深いステートメントを書こう。
 \end{theorem}
 
 \begin{proof*}
-  定理 \ref{thm:wonderful-theorem} の華麗な証明．そのあまりにも美しい証明に，読者の目は釘付けだ！
+  定理 \ref{thm:wonderful-theorem} の華麗な証明。その美しい証明に、読者の目は釘付けだ！
   \begin{enumerate}[leftmargin=0pt,itemindent=*,label=Case \arabic*.]
   \item 自明
-  \item 補題 \ref{lem:interesting-lemma} から直ちに導ける．
-  \item 言うまでもない．目を瞑れば証明が見えてくる．
+  \item 補題 \ref{lem:interesting-lemma} から直ちに導ける。
+  \item 言うまでもない。目を瞑れば証明が見えてくる。
   \item あんまり自明じゃない
     \begin{enumerate}[label=(\roman*)]
-    \item 自明じゃないと思ったけど，やっぱり自明だった
-    \item ほらね，こんなに簡単
+    \item 自明じゃないと思ったけど、やっぱり自明だった
+    \item ほらね、こんなに簡単
     \end{enumerate}
   \end{enumerate}
 \end{proof*}
