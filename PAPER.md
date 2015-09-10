@@ -127,7 +127,6 @@ sumiilab-paper.cls を読み込むと，以下の定理環境が定義されま�
 
 ```
 THEOREM_OPTIONS = "notheorems"
-                | "sharedthmnum"
                 | "theoremstyle=" THEOREMSTYLE
 ```
 
@@ -137,25 +136,6 @@ THEOREM_OPTIONS = "notheorems"
 sumiilab-paper.cls では theorem.sty を使って定理環境を作っていますが，
 どうしても amsthm.sty が使いたい人はこのオプションを指定して，
 自力で定理環境を定義して下さい．
-
-##### sharedthmnum
-
-デフォルトでは異なる種類の定理環境に対して，それぞれ異なるカウンタを使って定理番号を付けます．
-例えば，
-
-```latex
-\begin{definition} ... \end{definition}
-\begin{theorem} ... \end{theorem}
-\begin{definition} ... \end{definition}
-\begin{theorem} ... \end{theorem}
-```
-
-と書いた場合は，定義1.1，定理1.1，定義1.2，定理1.2のように番号付けされます．
-`sharedthmnum` オプションを指定すると，異なる種類の定理環境のカウンタを同期します．
-このオプションを指定して，上のコードをコンパイルすると，
-定義1.1，定理1.2，定義1.3，定理1.4と番号付けされます．
-全ての種類の定理環境のカウンタが同期され，
-`\newtheorem` で定義された定理環境についてもカウンタが同期されます．
 
 ##### theoremstyle
 

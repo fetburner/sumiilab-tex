@@ -1,10 +1,8 @@
 ## コンパイルする TeX ファイルの名前（拡張子は除く）
 FILE=slide
 
-## pLaTeX のコマンド（入力文字コードは utf8）
-LATEX=platex --kanji=utf8 -interaction=nonstopmode -halt-on-error
-## upLaTeX を使う人用
-# LATEX=uplatex -interaction=nonstopmode -halt-on-error
+## LuaLaTeX のコマンド（入力文字コードは utf8）
+LATEX=lualatex -interaction=nonstopmode -halt-on-error
 
 .PHONY: all clean
 
@@ -12,7 +10,6 @@ LATEX=platex --kanji=utf8 -interaction=nonstopmode -halt-on-error
 all:
 	$(LATEX) $(FILE).tex
 	$(LATEX) $(FILE).tex
-	dvipdfmx $(FILE).dvi
 
 ## make clean で LaTeX が出力する中間ファイルを削除（pdf は削除しない）
 clean:

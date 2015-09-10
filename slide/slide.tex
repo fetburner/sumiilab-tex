@@ -1,4 +1,4 @@
-\documentclass[cjk,xcolor=dvipsnames,envcountsect,notheorems]{beamer}
+\documentclass[cjk,xcolor=dvipsnames,envcountsect,notheorems,12pt]{beamer}
 % * 16:9 のスライドを作るときは、aspectratio=169 を documentclass のオプションに追加する
 % * 印刷用の配布資料を作るときは handout を documentclass のオプションに追加する
 %   （overlay が全て一つのスライドに出力される）
@@ -38,7 +38,8 @@
 %% 発表者のお名前
 \author{ラムダ 小太郎}
 %% 発表者の所属（[] 内は短い名前）
-\institute[住井研]{住井研究室}
+%\institute[東北大学　住井・松田研]{東北大学　工学部　電気情報物理工学科\\住井・松田研究室}% 学部生
+\institute[東北大学　住井・松田研]{東北大学　大学院　情報科学研究科\\住井・松田研究室}% 院生
 %% 発表する日
 \date{2000年1月1日}
 
@@ -343,6 +344,57 @@ let fact n
   in
   @g{fact'}@ @b{n}@ @r{1}@
 \end{lstlisting}
+\end{frame}
+
+\section{レイアウト}
+
+\begin{frame}
+  \frametitle{columns/column 環境}
+  \begin{columns}%% columns 環境の中に column 環境を入れる
+    \begin{column}{0.2\textwidth}%% [横幅] 0.2\textwidth = ページ幅の 20 %
+      %% ページの左側に表示される内容:
+      \begin{center}
+        \includegraphics{sample-image.pdf}
+      \end{center}
+    \end{column}
+    \begin{column}{0.8\textwidth}
+      %% ページの右側に表示される内容:
+      \begin{itemize}
+      \item ページを横に分割
+      \item 図・表・文を横に並べて配置可能
+      \item よく使うレイアウト
+      \item minipage 環境でも同じ事ができる
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \pause\vfill
+  \begin{columns}%% columns 環境の中に column 環境を入れる
+    \begin{column}{0.4\textwidth}
+      %% ページの左側に表示される内容:
+      \begin{center}
+        入れ子にしてみる
+      \end{center}
+      \begin{columns}
+        \begin{column}{0.33\textwidth}
+          \includegraphics[width=\textwidth]{sample-image.pdf}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+          \includegraphics[width=\textwidth]{sample-image.pdf}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+          \includegraphics[width=\textwidth]{sample-image.pdf}
+        \end{column}
+      \end{columns}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      %% ページの右側に表示される内容:
+      \begin{itemize}
+      \item 3 つ以上の分割も可能
+      \item 入れ子も可能
+      \item 柔軟に使えて便利！
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 %% ===============================================
