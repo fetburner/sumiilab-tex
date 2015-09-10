@@ -18,12 +18,17 @@
 % 数式の文字が細くて見難い時は serif の代わりに bold にしましょう
 %\mathversion{bold}
 
-% フォントの設定
-\setmainfont[Ligatures=TeX]{TeXGyreTermes}
-\setsansfont[Ligatures=TeX]{TeXGyreHeros}
-\setmainjfont{RictyDiminished}
-\setsansjfont{RictyDiminished}
-%\setmainjfont[BoldFont=RictyDiminished-Bold]{RictyDiminished-Regular}
+%% フォントの設定
+%\setmainfont[Ligatures=TeX]{TeXGyreTermes}
+%\setsansfont[Ligatures=TeX]{TeXGyreHeros}
+\setmainfont{IPAPGothic}
+\setsansfont{IPAPGothic}
+\setmainjfont{IPAPGothic}
+\setsansjfont{IPAPGothic}
+% \setmainjfont[BoldFont=RictyDiminished-Bold]{RictyDiminished-Regular}
+
+%% 使用可能なフォント名を調べるコマンド:
+%% $ fc-cache | sed 's/^[^:]*: //'
 
 %% ===============================================
 %% スライドの表紙および PDF に表示される情報
