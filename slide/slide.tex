@@ -336,6 +336,57 @@ let fact n
 \end{lstlisting}
 \end{frame}
 
+\section{レイアウト}
+
+\begin{frame}
+  \frametitle{columns/column 環境}
+  \begin{columns}%% columns 環境の中に column 環境を入れる
+    \begin{column}{0.2\textwidth}%% [横幅] 0.2\textwidth = ページ幅の 20 %
+      %% ページの左側に表示される内容:
+      \begin{center}
+        \includegraphics{sample-image.eps}
+      \end{center}
+    \end{column}
+    \begin{column}{0.8\textwidth}
+      %% ページの右側に表示される内容:
+      \begin{itemize}
+      \item ページを横に分割
+      \item 図・表・文を横に並べて配置可能
+      \item よく使うレイアウト
+      \item minipage 環境でも同じ事ができる
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \pause\vfill
+  \begin{columns}%% columns 環境の中に column 環境を入れる
+    \begin{column}{0.4\textwidth}
+      %% ページの左側に表示される内容:
+      \begin{center}
+        入れ子にしてみる
+      \end{center}
+      \begin{columns}
+        \begin{column}{0.33\textwidth}
+          \includegraphics[width=\textwidth]{sample-image.eps}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+          \includegraphics[width=\textwidth]{sample-image.eps}
+        \end{column}
+        \begin{column}{0.33\textwidth}
+          \includegraphics[width=\textwidth]{sample-image.eps}
+        \end{column}
+      \end{columns}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      %% ページの右側に表示される内容:
+      \begin{itemize}
+      \item 3 つ以上の分割も可能
+      \item 入れ子も可能
+      \item 柔軟に使えて便利！
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
 %% ===============================================
 %% 予備スライド
 %% ===============================================
