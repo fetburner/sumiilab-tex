@@ -79,6 +79,7 @@ cd "$WORKDIR"       # ワーキングディレクトリに移動して作業
 if ! check_sty 'jlisting.sty'; then
     wget 'http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Fmytexpert%2F26068%2Fjlisting.sty.bz2' -O jlisting.sty.bz2
     bunzip2 jlisting.sty.bz2
+    nkf --utf8 --overwrite
     install -D -m 0644 jlisting.sty "$TEXDIR/platex/jlisting/jlisting.sty"
 fi
 
