@@ -1,7 +1,7 @@
 TARGET = slide
 USEPDFLATEX = true
 PDFLATEX = lualatex
-PDFLATEXFLAGS = --kanji=utf8 -interaction=nonstopmode -halt-on-error
+PDFLATEXFLAGS = -interaction=nonstopmode -halt-on-error
 
 # 変更を監視するファイル
 TEXDEPS[] = $(TARGET).tex beamerthemesumiilab.sty $(glob i,images/*.pdf)
