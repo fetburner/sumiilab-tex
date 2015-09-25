@@ -1,8 +1,9 @@
 ## コンパイルする TeX ファイルの名前（拡張子は除く）
 FILE=slide
 
-## LuaLaTeX のコマンド（入力文字コードは utf8）
-LATEX=lualatex -interaction=nonstopmode -halt-on-error
+LATEX=platex --kanji=utf8 -interaction=nonstopmode -halt-on-error
+# LATEX=uplatex -interaction=nonstopmode -halt-on-error
+DVIPDFM=dvipdfmx
 
 .PHONY: all clean
 
@@ -10,6 +11,7 @@ LATEX=lualatex -interaction=nonstopmode -halt-on-error
 all:
 	$(LATEX) $(FILE).tex
 	$(LATEX) $(FILE).tex
+	$(DVIPDFM) $(FILE).dvi
 
 ## make clean で LaTeX が出力する中間ファイルを削除（pdf は削除しない）
 clean:
