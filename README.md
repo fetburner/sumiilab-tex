@@ -76,19 +76,6 @@ slide.tex を改造すれば、スライドが作れます。
   アニメーション等を使ったり、スライドを分けるなどして、未来に必要になる情報を隠しておくと良いです。
   （ただし、アニメーションといっても、非常に簡素なものに留めたほうが良いです。）
 
-### 既知のバグ
-
-次のようなエラーでスライドがコンパイルできなくなってしまった場合は、
-`rm beamericon*` とすることで、コンパイルできるようになります。
-
-```
-!LuaTeX error (file beamericonbook.pdf): reading image file failed
- ==> Fatal error occurred, no output PDF file produced!
-*** Errors detected while running LaTeX on slide.tex:
-*** omake error:
-   ...
-```
-
 ## 論文の書き方
 
 次の一連のコマンドを実行します。
