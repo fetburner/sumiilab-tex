@@ -112,9 +112,11 @@ paper.tex はクラスファイルの使用例を兼ねたテンプレートで�
 
 LaTeX の文書作成に有用な（と思われる）資料です。
 
+- [Detexify](http://detexify.kirelabs.org/classify.html)
+  手書き文字から LaTeX の記号を探してくれるツールです。
+  記号の出し方がわからない時は、これを使って探しましょう。
 - [The Comprehensive LaTeX Symbol List (PDF)](http://www.tex.ac.uk/tex-archive/info/symbols/comprehensive/symbols-a4.pdf):
-  LaTeX の記号が大量にリストアップされているので、必要な記号を探すのに良いです。
-  PDF なので、ダウンロードしてすぐに参照できるようにしておくと良いでしょう。
+  LaTeX の記号が大量にリストアップされている PDF ファイルです。
 - [日本語 LaTeX を使うときに注意するべきこと](http://www.math.tohoku.ac.jp/~kuroki/LaTeX/howtolatex.html):
   数式の体裁を整える方法について細かく書いてあって良いです。
 - Beamer の使い方：一応、簡単な使い方は slide.tex に書いてありますが、
