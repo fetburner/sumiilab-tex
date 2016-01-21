@@ -17,6 +17,12 @@ BibTeX を使うと、論文中で参照されている参考文献を、
 「論文題目 + bibtex + dblp」や「著者名 + bibtex + dblp」でググると、
 文献の BibTeX データを入手できます。DBLP は計算機科学系の参考文献データベースで、
 大量の論文が登録されているので、それなりの確率で目的の BibTeX データが手に入ります。
+論文タイトルの隣の **export record** から BibTeX コードを入手できます。
+
+例：http://dblp.uni-trier.de/pers/hd/s/Sumii:Eijiro （sumii bibtex でヒットした住井先生の論文リスト）
+
+<center>![DBLP における BibTeX コードへのリンク](dblp_bibtex_link.png)</center>
+
 DBLP の BibTeX データは比較的信頼できますが、ときどき間違っているので、
 書き換えのポイントを説明しておきます。
 
@@ -46,43 +52,23 @@ BibTeX は文献題目などの先頭以外の文字を勝手に小文字に変�
 ### 2. 参照の削除
 
 DBLP はあくまでデータベースなので、論文自体と論文が掲載された書籍や雑誌の情報を、
-別々に掲載していることがあります。例えば、以下の論文は、関数型プログラミング言語
-[ATS](http://www.ats-lang.org/) に関するものですが、DBLP では、
-次のように、論文と論文集が別々に記述されています。
+別々に掲載していることがあります。
 
-http://dblp.uni-trier.de/rec/bibtex/conf/frocos/CuiDX05
+例：http://dblp.uni-trier.de/rec/bibtex2/conf/csl/Sumii09
 
-    @inproceedings{DBLP:conf/frocos/CuiDX05,
-      author    = {Sa Cui and
-                   Kevin Donnelly and
-                   Hongwei Xi},
-      title     = {{ATS}: A Language That Combines Programming with Theorem Proving},
-      booktitle = {FroCoS},
-      year      = {2005},
-      pages     = {310-320},
-      ee        = {http://dx.doi.org/10.1007/11559306_19},
-      crossref  = {DBLP:conf/frocos/2005},
-      bibsource = {DBLP, http://dblp.uni-trier.de}
-    }
-
-    @proceedings{DBLP:conf/frocos/2005,
-      editor    = {Bernhard Gramlich},
-      title     = {Frontiers of Combining Systems, 5th International Workshop,
-                   FroCoS 2005, Vienna, Austria, September 19-21, 2005, Proceedings},
-      booktitle = {FroCoS},
-      publisher = {Springer},
-      series    = {Lecture Notes in Computer Science},
-      volume    = {3717},
-      year      = {2005},
-      isbn      = {3-540-29051-6},
-      bibsource = {DBLP, http://dblp.uni-trier.de}
-    }
-
-`@inproceedings` が参照したい論文で、`@proceedings` はその論文が掲載されている論文集です。
-この場合、そのまま `refs.bib` に書くと、参考文献として2つのエントリができてしまい、見苦しいので、
+この場合、そのまま `refs.bib` に書くと、参考文献として無駄に 2 つのエントリができてしまい、見苦しいので、
 うまく情報をマージする必要があります。
-`@proceedings` は大した情報を含んでいないので、`@inproceedings` の `crossref` の行を削除するだけで良いでしょう。
-マージの仕方がわからない場合は、担当の教員に質問して下さい。
+手作業でマージしても良いですが、DBLP には crossref なしの BibTeX コードを出力する機能があるので、
+それを使ったほうが簡単です。
+DBLP の BibTeX コードがあるページの右上に **with crossref** というプルダウンメニューがあるので、
+そこから **standard**（もしくは **condensed**）を選びます。
+
+<center>![DBLP における BibTeX コードの crossref の除去](dblp_bibtex_condensed.png)</center>
+
+すると、crossref なしの BibTeX コードが出力されます。
+condensed だと、standard よりも情報が少ないシンプルなコードが出力されます。
+投稿論文などでスペースが少なく、可能な限り参考文献の文字数を削りたいときは、
+condensed でも良いですが、普段は（卒論などでは）standard で良いでしょう。
 
 ## URL を参考文献に載せる
 
