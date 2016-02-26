@@ -146,7 +146,7 @@ DBLP はあくまでデータベースなので、論文自体と論文が掲載
 DBLP の BibTeX コードがあるページの右上に **with crossref** というプルダウンメニューがあるので、
 そこから **standard**（もしくは **condensed**）を選びます。
 
-<center>![DBLP における BibTeX コードの crossref の除去](dblp_bibtex_condensed.png)</center>
+<center>![DBLP における BibTeX コードの crossref の除去](dblp_bibtex_crossref.png)</center>
 
 すると、crossref なしの BibTeX コードが出力されます。
 condensed だと、standard よりも情報が少ないシンプルなコードが出力されます。
