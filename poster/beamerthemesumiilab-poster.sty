@@ -1,0 +1,146 @@
+\ProvidesPackage{beamerthemeBasicPoster}
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Fonts
+%%
+
+\usefonttheme{professionalfonts}
+\usefonttheme[onlymath]{serif}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+\renewcommand{\baselinestretch}{1.5}
+
+%% cf. http://www.sascha-frank.com/latex-font-size.HTML
+%% normalsize = 48pt (best)
+\renewcommand\tiny{\fontsize{20}{20}\selectfont}
+\renewcommand\scriptsize{\fontsize{25}{25}\selectfont}
+\renewcommand\footnotesize{\fontsize{30}{30}\selectfont}
+\renewcommand\small{\fontsize{36}{36}\selectfont}
+\renewcommand\normalsize{\fontsize{48}{48}\selectfont}
+\renewcommand\large{\fontsize{60}{60}\selectfont}
+\renewcommand\Large{\fontsize{72}{72}\selectfont}
+\renewcommand\LARGE{\fontsize{84}{84}\selectfont}
+\renewcommand\huge{\fontsize{96}{96}\selectfont}
+\renewcommand\Huge{\fontsize{108}{108}\selectfont}
+\newcommand\HUGE{\fontsize{120}{120}\selectfont}
+%% normalsize = 36pt (slightly small)
+% \renewcommand\tiny{\fontsize{17}{17}\selectfont}
+% \renewcommand\scriptsize{\fontsize{20}{20}\selectfont}
+% \renewcommand\footnotesize{\fontsize{25}{25}\selectfont}
+% \renewcommand\small{\fontsize{30}{30}\selectfont}
+% \renewcommand\normalsize{\fontsize{36}{36}\selectfont}
+% \renewcommand\large{\fontsize{48}{48}\selectfont}
+% \renewcommand\Large{\fontsize{60}{60}\selectfont}
+% \renewcommand\LARGE{\fontsize{72}{72}\selectfont}
+% \renewcommand\huge{\fontsize{84}{84}\selectfont}
+% \renewcommand\Huge{\fontsize{96}{96}\selectfont}
+% \newcommand\HUGE{\fontsize{108}{108}\selectfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Headline
+%%
+
+\setbeamercolor{headline}{fg=white,bg=structure}
+\setbeamerfont{title in headline}{size=\LARGE,series=\bfseries}
+\setbeamerfont{author in headline}{size=\large}
+\setbeamerfont{institute in headline}{size=\normalsize}
+
+\setbeamertemplate{headline}{%
+  \leavevmode
+
+  \begin{beamercolorbox}[wd=\textwidth]{headline}
+    \begin{columns}[T]
+      \begin{column}{.02\paperwidth}
+      \end{column}
+      \begin{column}{.96\paperwidth}
+        \vskip4ex
+        \centering
+        \usebeamercolor{title in headline}{%
+          \usebeamerfont{title in headline}{\inserttitle}}\\[2ex]
+        \usebeamercolor{author in headline}{%
+          \usebeamerfont{author in headline}{\insertauthor}}\\[1ex]
+        \usebeamercolor{institute in headline}{%
+          \usebeamerfont{institute in headline}{\insertinstitute}}
+      \end{column}
+      \begin{column}{.02\paperwidth}
+      \end{column}
+    \end{columns}
+    \vskip1.5ex
+  \end{beamercolorbox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Blocks
+%%
+
+\definecolor{MidnightBlue}{cmyk}{1,1,0,0}
+\setbeamercolor{structure}{fg=MidnightBlue}
+
+\setbeamercolor{block title}{fg=white,bg=structure}
+\setbeamerfont{block title}{series=\bfseries,size=\large}
+\setbeamercolor{block body}{bg=structure!10}
+
+\setbeamercolor{block title example}{fg=white,bg=OliveGreen}
+\setbeamerfont{block title example}{series=\bfseries,size=\large}
+\setbeamercolor{block body example}{bg=OliveGreen!10}
+
+\setbeamercolor{block title alerted}{fg=white,bg=red}
+\setbeamerfont{block title alerted}{series=\bfseries,size=\large}
+\setbeamercolor{block body alerted}{bg=red!10}
+
+%%% BLOCK WIDTH ADJUSTMENT
+%%%
+%%% `block' environments have widths larger than `wd' option because
+%%% their 0.75ex inner margins are not included in `wd'.
+
+%% Usage: \addtobeamertemplate{<element-name>}{<pre-text>}{<post-text>}
+\addtobeamertemplate{block begin}
+  {\begin{columns}[onlytextwidth]
+   \begin{column}[t]{.75ex}\end{column}%% left margin .75ex
+   \begin{column}{\textwidth-1.5ex}}{}
+\addtobeamertemplate{block end}{}
+  {\end{column}
+   \begin{column}[t]{.75ex}\end{column}%% right margin .75ex
+   \end{columns}}
+
+\addtobeamertemplate{block alerted begin}
+  {\begin{columns}[onlytextwidth]
+   \begin{column}[t]{.75ex}\end{column}%% left margin .75ex
+   \begin{column}{\textwidth-1.5ex}}{}
+\addtobeamertemplate{block alerted end}{}
+  {\end{column}
+   \begin{column}[t]{.75ex}\end{column}%% right margin .75ex
+   \end{columns}}
+
+\addtobeamertemplate{block example begin}
+  {\begin{columns}[onlytextwidth]
+   \begin{column}[t]{.75ex}\end{column}%% left margin .75ex
+   \begin{column}{\textwidth-1.5ex}}{}
+\addtobeamertemplate{block example end}{}
+  {\end{column}
+   \begin{column}[t]{.75ex}\end{column}%% right margin .75ex
+   \end{columns}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Itemize, Enumerate
+%%
+
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[square]
+\setbeamertemplate{enumerate item}[circle]
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\small}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Others
+%%
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}{\insertcaption}
+\setbeamersize{text margin left=0pt,text margin right=0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<all>

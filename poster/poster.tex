@@ -1,0 +1,65 @@
+\documentclass[cjk,dvipdfmx,xcolor=dvipsnames,fleqn]{beamer}
+\usepackage[orientation=portrait,size=a0]{beamerposter}
+\usetheme{sumiilab-poster}
+\usepackage{pxjahyper}%% PDF のしおりの文字化け対策
+\usepackage{graphicx}
+\usepackage{calc}%% Enable infix arithmetic operators
+
+\title[Beamer Poster]{住井・松田研究室のステキなポスター}
+\author[Lambda \& Pi]{ラムダ小太郎 \and パイ三郎}
+\institute[東北大学]{東北大学　大学院情報科学研究科}
+
+\begin{document}
+\begin{frame}[t,fragile]{}
+  \begin{block}{はじめに}
+    \alert{LaTeX} で学会ポスターを作りたい人のために！
+    \begin{itemize}
+    \item （宗教上の理由で）PowerPoint を使えない人に有用
+    \item Beamer でポスターが書ける (beamerposter.sty)
+    \item よだれが出るほど美しい数式
+    \item \alert{可読性}・\alert{視認性}を重視
+      \begin{itemize}
+      \item センス極まったデザインにしたい人は勝手にどうぞ
+      \end{itemize}
+    \end{itemize}
+  \end{block}
+  \vskip1ex
+  \begin{columns}[onlytextwidth]
+    \begin{column}[t]{0.5\textwidth-1em}
+      \begin{block}{簡単な機能紹介}
+        \begin{itemize}
+        \item セクション：block 環境を使う
+          \begin{itemize}
+          \item alertblock, exampleblock も可
+          \end{itemize}
+        \item 段組：columns, column 環境を使う
+        \item フォントサイズ：
+          \begin{itemize}
+          \item tiny: {\tiny abc あいうえお}
+          \item scriptsize: {\scriptsize abc あいうえお}
+          \item footnotesize: {\footnotesize abc あいうえお}
+          \item small: {\small abc あいうえお}
+          \item normalsize: {\normalsize abc あいうえお}
+          \item large: {\large abc あいうえお}
+          \item Large: {\Large abc あいうえお}
+          \item LARGE: {\Large abc あいうえお}
+          \item huge: {\huge abc あいうえお}
+          \item Huge: {\Huge abc あいうえお}
+          \item HUGE: {\HUGE abc あいうえお}
+          \end{itemize}
+        \item その他、アニメーション以外の Beamer の主な機能はだいたい使える
+        \end{itemize}
+      \end{block}
+      \vskip1ex
+    \end{column}
+    \begin{column}[t]{0.5\textwidth}
+      \begin{alertblock}{節タイトル}
+        これは alertblock
+      \end{alertblock}
+      \begin{exampleblock}{節タイトル}
+        これは exampleblock
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+\end{document}
