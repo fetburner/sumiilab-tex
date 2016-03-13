@@ -1,9 +1,12 @@
-\documentclass[dvipdfmx,cjk,xcolor=dvipsnames,envcountsect,notheorems,12pt]{beamer}
+\documentclass[cjk,xcolor=dvipsnames,envcountsect,notheorems,12pt]{beamer}
 % * 16:9 のスライドを作るときは、aspectratio=169 を documentclass のオプションに追加する
 % * 印刷用の配布資料を作るときは handout を documentclass のオプションに追加する
 %   （overlay が全て一つのスライドに出力される）
 
-\usepackage{pxjahyper}% しおりの文字化け対策 (なくても良い)
+\graphicspath{{./figures/}}
+\hypersetup{unicode=true}% しおりの文字化け対策
+\usepackage[no-math]{fontspec}
+\usepackage{luatexja,luatexja-fontspec}
 \usepackage{amsmath,amssymb,amsfonts,amsthm,ascmac,cases,bm,pifont}
 \usepackage{graphicx}
 \usepackage{url}
@@ -14,6 +17,20 @@
 %\usecolortheme[named=Magenta]{structure}
 % 数式の文字が細くて見難い時は serif の代わりに bold にしましょう
 %\mathversion{bold}
+
+%% フォントの埋め込み (MigMix 1P http://mix-mplus-ipa.osdn.jp/migmix/)
+\setsansfont[% 英語 Sans フォントの指定
+  Path=./fonts/migmix-1p-20150712/,
+  Extension=.ttf,
+  Ligatures=TeX,
+  BoldFont=migmix-1p-bold
+]{migmix-1p-regular}
+\setsansjfont[% 日本語 Sans フォントの指定
+  Path=./fonts/migmix-1p-20150712/,
+  Extension=.ttf,
+  Ligatures=TeX,
+  BoldFont=migmix-1p-bold
+]{migmix-1p-regular}
 
 %% ===============================================
 %% スライドの表紙および PDF に表示される情報

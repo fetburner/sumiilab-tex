@@ -1,17 +1,14 @@
 ## コンパイルする TeX ファイルの名前（拡張子は除く）
 FILE=slide
 
-LATEX=platex --kanji=utf8 -interaction=nonstopmode -halt-on-error
-# LATEX=uplatex -interaction=nonstopmode -halt-on-error
-DVIPDFM=dvipdfmx
+PDFLATEX=lualatex -interaction=nonstopmode -halt-on-error
 
 .PHONY: all clean
 
 ## LaTeX は目次や文献参照、式番号参照などの解決のために複数回のコンパイルが必要です。
 all:
-	$(LATEX) $(FILE).tex
-	$(LATEX) $(FILE).tex
-	$(DVIPDFM) $(FILE).dvi
+	$(PDFLATEX) $(FILE).tex
+	$(PDFLATEX) $(FILE).tex
 
 ## make clean で LaTeX が出力する中間ファイルを削除（pdf は削除しない）
 clean:
