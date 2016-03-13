@@ -1,20 +1,22 @@
 TARGET = poster
-LATEX = platex
-LATEXFLAGS = --kanji=utf8 -interaction=nonstopmode -halt-on-error
-## For upLaTeX
-## LATEX = uplatex
-## LATEXFLAGS = -interaction=nonstopmode -halt-on-error
-DVIPDFM = dvipdfmx
-DVIPDFMFLAGS =
+USEPDFLATEX = true
+PDFLATEX = lualatex
+PDFLATEXFLAGS = -interaction=nonstopmode -halt-on-error
 
 # 変更を監視するファイル
-TEXDEPS[] = $(TARGET).tex beamerposter.sty beamerthemesumiilab-poster.sty $(glob i,*.eps)
+TEXDEPS[] = $(TARGET).tex beamerposter.sty beamerthemesumiilab-poster.sty $(glob i,figures/*.eps) $(glob i,figures/*.pdf)
 
 .PHONY: all clean
 
 LaTeXDocument($(TARGET), $(TARGET))
 
-.DEFAULT: $(TARGET).pdf $(TARGET).dvi
+.DEFAULT: $(TARGET).pdf
+
+# beamericon*.pdf はカレントディレクトリに存在しなくても、勝手に読み込まれるが、
+# OMake がそのことを認識せず、カレントディレクトリに存在することを仮定するため、
+# 以下の生成ルールが無いと、コンパイルに失敗する（場当たり的対処）。
+beamericon%.pdf:
+	test -f $@ || ln -s $(shell kpsewhich $@) .
 
 clean:
-	rm -f *.acn *.acr *.alg *.aux *.bbl *.blg *.dvi *.fdb_latexmk *.glg *.glo *.gls *.idx *.ilg *.ind *.ist *.lof *.log *.lot *.maf *.mtc *.mtc0 *.nav *.nlo *.out *.pdfsync *.ps *.snm *.synctex.gz *.toc *.vrb *.xdy *.tdo *.fls
+	rm -f *.acn *.acr *.alg *.aux *.bbl *.blg *.dvi *.fdb_latexmk *.glg *.glo *.gls *.idx *.ilg *.ind *.ist *.lof *.log *.lot *.maf *.mtc *.mtc0 *.nav *.nlo *.out *.pdfsync *.ps *.snm *.synctex.gz *.toc *.vrb *.xdy *.tdo *.fls beamericon*.pdf

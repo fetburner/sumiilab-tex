@@ -1,9 +1,27 @@
-\documentclass[cjk,dvipdfmx,xcolor=dvipsnames,fleqn]{beamer}
-\usepackage[orientation=portrait,size=a0]{beamerposter}
-\usetheme{sumiilab-poster}
-\usepackage{pxjahyper}%% PDF のしおりの文字化け対策
+\documentclass[cjk,xcolor=dvipsnames,fleqn]{beamer}
+\graphicspath{{./figures/}}
+\hypersetup{unicode=true}% しおりの文字化け対策
+\usepackage[no-math]{fontspec}
+\usepackage{luatexja,luatexja-fontspec}
 \usepackage{graphicx}
 \usepackage{calc}%% Enable infix arithmetic operators
+
+\usepackage[orientation=portrait,size=a0]{beamerposter}
+\usetheme{sumiilab-poster}
+
+%% フォントの埋め込み (MigMix 1P http://mix-mplus-ipa.osdn.jp/migmix/)
+\setsansfont[% 英語 Sans フォントの指定
+  Path=./fonts/migmix-1p-20150712/,
+  Extension=.ttf,
+  Ligatures=TeX,
+  BoldFont=migmix-1p-bold
+]{migmix-1p-regular}
+\setsansjfont[% 日本語 Sans フォントの指定
+  Path=./fonts/migmix-1p-20150712/,
+  Extension=.ttf,
+  Ligatures=TeX,
+  BoldFont=migmix-1p-bold
+]{migmix-1p-regular}
 
 \title[Beamer Poster]{住井・松田研究室のステキなポスター}
 \author[Lambda \& Pi]{ラムダ小太郎 \and パイ三郎}
