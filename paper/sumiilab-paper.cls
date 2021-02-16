@@ -118,6 +118,20 @@
     }\end{center}
   \end{titlepage}}
 
+%% \paragraphのスタイル
+\makeatletter
+\if@twocolumn
+  \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+    {\z@}{-1zw}% 改行せず 1zw のアキ
+    {\normalfont\normalsize\headfont}}
+\else
+  \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+    {0.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+    {-1zw}% 改行せず 1zw のアキ
+    {\normalfont\normalsize\headfont}}
+\fi
+\makeatother
+
 %% ===============================================
 %% Theorems
 %% ===============================================
