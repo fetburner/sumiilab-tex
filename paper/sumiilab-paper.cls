@@ -119,7 +119,6 @@
   \end{titlepage}}
 
 %% \paragraphのスタイル
-\makeatletter
 \if@twocolumn
   \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
     {\z@}{-1zw}% 改行せず 1zw のアキ
@@ -130,7 +129,6 @@
     {-1zw}% 改行せず 1zw のアキ
     {\normalfont\normalsize\headfont}}
 \fi
-\makeatother
 
 %% ===============================================
 %% Theorems
