@@ -134,53 +134,53 @@
 %% Theorems
 %% ===============================================
 
-\if@notheorems\else
-  \usepackage{theorem}
-  \theoremstyle{\slp@theoremstyle}
+%% \if@notheorems\else
+%%   \usepackage{theorem}
+%%   \theoremstyle{\slp@theoremstyle}
 
-  \let\thm@newtheorem=\newtheorem% The original \newtheorem of theorem.sty
-  \renewcommand{\newtheorem}{\@ifstar\@@newtheorem\@newtheorem}% frontend
-  \newcommand{\@newtheorem}[2]{\thm@newtheorem{#1}[theorem]{#2}}
-  \newcommand{\@@newtheorem}[2]{% starred \newtheorem
-    \thm@newtheorem{#1}{#2}%
-    \expandafter\gdef\csname the#1\endcsname{}}
+%%   \let\thm@newtheorem=\newtheorem% The original \newtheorem of theorem.sty
+%%   \renewcommand{\newtheorem}{\@ifstar\@@newtheorem\@newtheorem}% frontend
+%%   \newcommand{\@newtheorem}[2]{\thm@newtheorem{#1}[theorem]{#2}}
+%%   \newcommand{\@@newtheorem}[2]{% starred \newtheorem
+%%     \thm@newtheorem{#1}{#2}%
+%%     \expandafter\gdef\csname the#1\endcsname{}}
 
-  \newcommand{\both@newtheorem}[2]{%
-    \newtheorem{#1}{#2}%
-    \newtheorem*{#1*}{#2}}
+%%   \newcommand{\both@newtheorem}[2]{%
+%%     \newtheorem{#1}{#2}%
+%%     \newtheorem*{#1*}{#2}}
 
-  \if@japanese%% JAPANESE
-    \theorembodyfont{\normalfont}
-    \thm@newtheorem{theorem}{定理}[chapter]
-    \both@newtheorem{lemma}{補題}
-    \both@newtheorem{corollary}{系}
-    \both@newtheorem{proposition}{命題}
-    \both@newtheorem{definition}{定義}
-    \both@newtheorem{example}{例}
-    \both@newtheorem{assumption}{仮定}
-    \both@newtheorem{axiom}{公理}
-    \both@newtheorem{proof}{証明}
-  \else%% ENGLISH
-    \thm@newtheorem{theorem}{Theorem}[chapter]
-    \both@newtheorem{lemma}{Lemma}
-    \both@newtheorem{corollary}{Corollary}
-    \both@newtheorem{proposition}{Proposition}
-    \both@newtheorem{definition}{Definition}
-    \both@newtheorem{example}{Example}
-    \both@newtheorem{assumption}{Assumption}
-    \both@newtheorem{axiom}{Axiom}
-    \both@newtheorem{proof}{Proof}
-  \fi
-  \newcommand{\qed}{\hfill $\Box$}
-\fi
+%%   \if@japanese%% JAPANESE
+%%     \theorembodyfont{\normalfont}
+%%     \thm@newtheorem{theorem}{定理}[chapter]
+%%     \both@newtheorem{lemma}{補題}
+%%     \both@newtheorem{corollary}{系}
+%%     \both@newtheorem{proposition}{命題}
+%%     \both@newtheorem{definition}{定義}
+%%     \both@newtheorem{example}{例}
+%%     \both@newtheorem{assumption}{仮定}
+%%     \both@newtheorem{axiom}{公理}
+%%     \both@newtheorem{proof}{証明}
+%%   \else%% ENGLISH
+%%     \thm@newtheorem{theorem}{Theorem}[chapter]
+%%     \both@newtheorem{lemma}{Lemma}
+%%     \both@newtheorem{corollary}{Corollary}
+%%     \both@newtheorem{proposition}{Proposition}
+%%     \both@newtheorem{definition}{Definition}
+%%     \both@newtheorem{example}{Example}
+%%     \both@newtheorem{assumption}{Assumption}
+%%     \both@newtheorem{axiom}{Axiom}
+%%     \both@newtheorem{proof}{Proof}
+%%   \fi
+%%   \newcommand{\qed}{\hfill $\Box$}
+%% \fi
 
 %% ===============================================
 %% Listings
 %% ===============================================
 
-\if@nolistings\else
-  \usepackage{listings}
-  \if@japanese
-    \usepackage{jlisting}
-  \fi
-\fi
+%% \if@nolistings\else
+%%   \usepackage{listings}
+%%   \if@japanese
+%%     \usepackage{jlisting}
+%%   \fi
+%% \fi

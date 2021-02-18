@@ -2,7 +2,7 @@
 FILE=paper
 
 ## pLaTeX のコマンド（入力文字コードは utf8）
-LATEX=platex --kanji=utf8 -interaction=nonstopmode -halt-on-error
+LATEX=uplatex --kanji=utf8 -interaction=nonstopmode -halt-on-error
 ## upLaTeX を使う人用
 ##     ※ uplatex は内部データも UTF-8 で処理する LaTeX です。
 ##       "platex --kanji=utf8" では UTF-8 で読み込んだテキストを

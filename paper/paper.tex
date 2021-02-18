@@ -1,4 +1,4 @@
-\documentclass{sumiilab-paper}
+\documentclass[uplatex]{sumiilab-paper}
 %% uplatex を使う場合：
 % \documentclass[uplatex]{sumiilab-paper}
 \usepackage{amsmath,amssymb,amsfonts,ascmac,cases,bm}
@@ -6,13 +6,41 @@
 \usepackage{enumitem}
 \usepackage{bussproofs}
 
+\usepackage{listings}
+\usepackage{amsthm}
+
+%% =========================================
+%% 定理環境の設定
+%% =========================================
+\newtheoremstyle{mystyle}% name
+{}% space above
+{}% space below
+{\normalfont}% body font
+{}% indent amount
+{\bfseries}% theorem head font
+{ }% punctuation after theorem head
+{4pt}% space after theorem head (default: 5pt)
+{\thmname{#1}\thmnumber{#2}\thmnote{\hspace{2pt}(#3)}}% theorem head spec
+
+\theoremstyle{mystyle}
+\newtheorem{definition}{定義}
+\newtheorem{theorem}[definition]{定理}
+\newtheorem{corollary}[definition]{系}
+\newtheorem{proposition}[definition]{命題}
+\newtheorem{lemma}[definition]{補題}
+\newtheorem{example}[definition]{例}
+\newtheorem{assumption}[definition]{仮定}
+\newtheorem{axiom}[definition]{公理}
+\renewcommand{\proofname}{\bf{証明}}
+\numberwithin{definition}{chapter} % 定義1.1のように表示
+
 %% ===============================================
 %% 論文の表紙に表示される情報
 %% ===============================================
 
 % 論文の年度と種類
-\paper{平成 n 年度 卒業論文}% 学部生
-%\paper{平成 n 年度 修士論文}% 修士
+\paper{20XX 年度 卒業論文}% 学部生
+%\paper{20XX 年度 修士論文}% 修士
 
 % 論文のタイトル
 \title{住井研究室の\\ステキな論文クラスファイルの使用例}
@@ -29,7 +57,7 @@
 \subsupervisor{松田 一孝 准教授}% 論文指導教員(省略可)
 
 % 論文発表日時
-\date{平成 n 年1月1日 \quad 23:00--23:30}
+\date{20XX 年1月1日 \quad 23:00--23:30}
 % 発表場所
 \venue{電子情報システム・応物系1号館2階トイレ}
 
@@ -105,15 +133,14 @@ array 環境は数式環境中で表のようなものを書くときに使う�
 %% 空白を明示的に開けるときは "\," "\ " "~" "\quad" "\qquad" などを使う。
 %% 空白の幅は "\qquad" > "\quad" > "~" = "\ " > "\," の順で大きい。
 %% "~" と "\ " は空白の代わりに改行を許すかどうかの違い（"\ " だと改行される可能性がある）
-\begin{array}{rl@{\qquad\qquad}r}
-  t ::=
-  & & \mbox{terms:} \\
-  & x & \mbox{variables} \\
-  & \lambda x.~t & \mbox{lambda abstraction} \\
-  & t_1~t_2 & \mbox{application} \\
-  & \TRUE & \mbox{true} \\
-  & \FALSE & \mbox{false} \\
-  & \IF~t_1~\THEN~t_2~\ELSE~t_3 & \mbox{if statement}
+\begin{array}{rcl@{\qquad\qquad}r}
+  t & ::= & & \text{terms:} \\
+  &\mid & x & \text{variables} \\
+  &\mid & \lambda x.~t & \text{lambda abstraction} \\
+  &\mid & t_1~t_2 & \text{application} \\
+  &\mid & \TRUE & \text{true} \\
+  &\mid & \FALSE & \text{false} \\
+  &\mid & \IF~t_1~\THEN~t_2~\ELSE~t_3 & \text{if statement}
 \end{array}
 \]
 
@@ -239,13 +266,17 @@ bussproofs.sty の動作は、（導出木を要素とする）スタックを�
   公理の内容
 \end{axiom}
 
-\begin{proof}[証明のタイトル]
-  証明の内容 \qed
+\begin{proof}
+  証明の内容
 \end{proof}
 
-\begin{proof*}[証明のタイトル]
-  証明の内容（番号なしの証明環境。証明を \lstinline|\ref| で参照する必要がないなら、こっちを使うほうが自然かも） \qed
-\end{proof*}
+%% \begin{proof}[証明のタイトル]
+%%   証明の内容（番号なしの証明環境。証明を \lstinline|\ref| で参照する必要がないなら、こっちを使うほうが自然かも） \qed
+%% \end{proof}
+
+%% \begin{proof*}[証明のタイトル]
+%%   証明の内容（番号なしの証明環境。証明を \lstinline|\ref| で参照する必要がないなら、こっちを使うほうが自然かも） \qed
+%% \end{proof*}
 
 \subsection{定理環境の使い方の例}
 
@@ -255,9 +286,9 @@ bussproofs.sty の動作は、（導出木を要素とする）スタックを�
   補題や定理から直ちに導けるような軽い命題は系 (corollary) にする（細かい使い分けは人による）。
 \end{lemma}
 
-\begin{proof*}
+\begin{proof}
   \lstinline|proof*| のように、アスタリスク付きの環境では、番号が付かない。
-\end{proof*}
+\end{proof}
 
 \begin{theorem}
   \label{thm:wonderful-theorem}
@@ -265,7 +296,7 @@ bussproofs.sty の動作は、（導出木を要素とする）スタックを�
   読者の心をくすぐる興味深いステートメントを書こう。
 \end{theorem}
 
-\begin{proof*}
+\begin{proof}
   定理 \ref{thm:wonderful-theorem} の華麗な証明。その美しい証明に、読者の目は釘付けだ！
   \begin{enumerate}[leftmargin=0pt,itemindent=*,label=Case \arabic*.]
   \item 自明
@@ -277,7 +308,7 @@ bussproofs.sty の動作は、（導出木を要素とする）スタックを�
     \item ほらね、こんなに簡単
     \end{enumerate}
   \end{enumerate}
-\end{proof*}
+\end{proof}
 
 \section{ソースコード}
 
@@ -300,7 +331,7 @@ let rec listup_nodes = function
 ステキな論文の謝辞
 
 %% 参考文献: bibtex
-\bibliographystyle{junsrt}
+\bibliographystyle{jplain}
 \bibliography{refs}
 
 \end{document}
